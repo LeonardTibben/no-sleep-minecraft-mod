@@ -1,0 +1,11 @@
+{
+	"required": true,
+	"package": "lenny.nosleeping.mixin.client",
+	"compatibilityLevel": "JAVA_21",
+	"client": [
+		"ExampleClientMixin"
+	],
+	"injectors": {
+		"defaultRequire": 1
+	}
+}
