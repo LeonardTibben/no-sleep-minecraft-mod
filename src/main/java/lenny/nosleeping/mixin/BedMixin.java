@@ -34,3 +34,10 @@ public class BedMixin {
         }
     }
 }
+
+
+// -Dfabric.dli.config=/home/leonard/Projects/minecraft/.gradle/loom-cache/launch.cfg
+//-Dfabric.dli.env=client
+//-Dfabric.dli.main=net.fabricmc.loader.impl.launch.knot.KnotClient
+//-XX:+AllowEnhancedClassRedefinition
+//-javaagent:/home/leonard/.gradle/caches/modules-2/files-2.1/net.fabricmc/sponge-mixin/0.16.5+mixin.0.8.7/80fc3a9f592673cea87f4cd702f87991c6c9fe4d/sponge-mixin-0.16.5+mixin.0.8.7.jar
