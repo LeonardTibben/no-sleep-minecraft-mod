@@ -3,14 +3,14 @@
   "package": "lenny.nosleeping.mixin",
   "compatibilityLevel": "JAVA_21",
   "mixins": [
-    "ExampleMixin",
-    "SheepEntityMixin",
-    "BedMixin"
+    "BedMixin",
+    "PhantomEntityMixin",
+    "PhantomSpawnerMixin"
   ],
   "injectors": {
     "defaultRequire": 1
   },
   "overwrites": {
     "requireAnnotations": true
-	}
+  }
 }

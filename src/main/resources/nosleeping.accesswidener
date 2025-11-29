@@ -1,0 +1,13 @@
+accessWidener v2 named
+accessible class net/minecraft/entity/mob/PhantomEntity$StartAttackGoal
+accessible class net/minecraft/entity/mob/PhantomEntity$SwoopMovementGoal
+accessible class net/minecraft/entity/mob/PhantomEntity$CircleMovementGoal
+accessible class net/minecraft/entity/mob/PhantomEntity$FindTargetGoal
+
+#<access>   method   <className>   <methodName>   <methodDesc>
+accessible method net/minecraft/entity/mob/PhantomEntity$StartAttackGoal <init> (Lnet/minecraft/entity/mob/PhantomEntity;)V
+accessible method net/minecraft/entity/mob/PhantomEntity$SwoopMovementGoal <init> (Lnet/minecraft/entity/mob/PhantomEntity;)V
+accessible method net/minecraft/entity/mob/PhantomEntity$CircleMovementGoal <init> (Lnet/minecraft/entity/mob/PhantomEntity;)V
+accessible method net/minecraft/entity/mob/PhantomEntity$FindTargetGoal <init> (Lnet/minecraft/entity/mob/PhantomEntity;)V
+accessible method net/minecraft/entity/mob/PhantomEntity testTargetPredicate (Lnet/minecraft/server/world/ServerWorld;Lnet/minecraft/entity/LivingEntity;Lnet/minecraft/entity/ai/TargetPredicate;)Z
+accessible class net/minecraft/util/Identifier
