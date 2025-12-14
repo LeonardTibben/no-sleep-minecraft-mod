@@ -17,6 +17,8 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
+import java.util.List;
+
 @Mixin(BedBlock.class)
 public class BedMixin {
 
@@ -25,19 +27,34 @@ public class BedMixin {
         if (player instanceof ServerPlayerEntity) {
             ServerAdvancementLoader serverAdvancementLoader = player.getEntityWorld().getServer().getAdvancementLoader();
 
+            List<PlayerEntity> players = (List<PlayerEntity>) world.getPlayers();
+
             AdvancementEntry killDragon = serverAdvancementLoader.get(Identifier.tryParse("minecraft:end/kill_dragon"));
             AdvancementEntry killWither = serverAdvancementLoader.get(Identifier.tryParse("minecraft:nether/create_beacon"));
             AdvancementEntry defeatRaid = serverAdvancementLoader.get(Identifier.tryParse("minecraft:adventure/hero_of_the_village"));
 
-            if (!((ServerPlayerEntity) player).getAdvancementTracker().getProgress(killDragon).isDone()
-                    && !((ServerPlayerEntity) player).getAdvancementTracker().getProgress(killWither).isDone()
-                    && !((ServerPlayerEntity) player).getAdvancementTracker().getProgress(defeatRaid).isDone()) {
-                Text literal = Text.of("You may not rest yet, there is still work to be done!");
-                player.sendMessage(literal, false);
-                System.out.println("no rest for the wicked");
-                cir.setReturnValue(ActionResult.FAIL);
-                cir.cancel();
+            for (int i = 0; i < players.size(); i++) {
+
+                if (!((ServerPlayerEntity) player).getAdvancementTracker().getProgress(killDragon).isDone()
+                        && !((ServerPlayerEntity) player).getAdvancementTracker().getProgress(killWither).isDone()
+                        && !((ServerPlayerEntity) player).getAdvancementTracker().getProgress(defeatRaid).isDone()) {
+                    Text literal = Text.of("You may not rest yet, there is still work to be done!");
+                    player.sendMessage(literal, false);
+                    cir.setReturnValue(ActionResult.FAIL);
+                    cir.cancel();
+                    i = players.size();
+                }
             }
+
+
+//            if (!((ServerPlayerEntity) player).getAdvancementTracker().getProgress(killDragon).isDone()
+//                    && !((ServerPlayerEntity) player).getAdvancementTracker().getProgress(killWither).isDone()
+//                    && !((ServerPlayerEntity) player).getAdvancementTracker().getProgress(defeatRaid).isDone()) {
+//                Text literal = Text.of("You may not rest yet, there is still work to be done!");
+//                player.sendMessage(literal, false);
+//                cir.setReturnValue(ActionResult.FAIL);
+//                cir.cancel();
+//            }
         }
     }
 }
