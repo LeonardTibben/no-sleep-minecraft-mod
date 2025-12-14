@@ -45,16 +45,6 @@ public class BedMixin {
                     i = players.size();
                 }
             }
-
-
-//            if (!((ServerPlayerEntity) player).getAdvancementTracker().getProgress(killDragon).isDone()
-//                    && !((ServerPlayerEntity) player).getAdvancementTracker().getProgress(killWither).isDone()
-//                    && !((ServerPlayerEntity) player).getAdvancementTracker().getProgress(defeatRaid).isDone()) {
-//                Text literal = Text.of("You may not rest yet, there is still work to be done!");
-//                player.sendMessage(literal, false);
-//                cir.setReturnValue(ActionResult.FAIL);
-//                cir.cancel();
-//            }
         }
     }
 }
