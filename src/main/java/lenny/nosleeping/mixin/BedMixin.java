@@ -27,7 +27,7 @@ public class BedMixin {
         if (player instanceof ServerPlayerEntity) {
             ServerAdvancementLoader serverAdvancementLoader = player.getEntityWorld().getServer().getAdvancementLoader();
 
-            List<PlayerEntity> players = (List<PlayerEntity>) world.getPlayers();
+            var players = world.getPlayers();
 
             AdvancementEntry killDragon = serverAdvancementLoader.get(Identifier.tryParse("minecraft:end/kill_dragon"));
             AdvancementEntry killWither = serverAdvancementLoader.get(Identifier.tryParse("minecraft:nether/create_beacon"));
