@@ -22,7 +22,6 @@ public class PhantomRevengeGoal extends Goal {
     @Override
     public boolean canStart() {
         if (phantom.getLastAttackedTime() == 0) {
-            System.out.println(phantom.getLastAttackedTime());
             return false;
         }
         if (this.delay > 0) {

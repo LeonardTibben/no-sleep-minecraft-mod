@@ -11,7 +11,9 @@ import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.random.Random;
 import net.minecraft.world.LocalDifficulty;
+import net.minecraft.world.MoonPhase;
 import net.minecraft.world.SpawnHelper;
+import net.minecraft.world.attribute.EnvironmentAttributes;
 import net.minecraft.world.spawner.PhantomSpawner;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
@@ -27,7 +29,9 @@ public class PhantomSpawnerMixin {
     @Inject(method = "spawn", at = @At("HEAD"), cancellable = true)
     protected void injectOnUseMethod(ServerWorld world, boolean spawnMonsters, CallbackInfo ci) {
         if (spawnMonsters) {
-            if (world.getMoonPhase() == 4) {
+            MoonPhase moonPhase = (MoonPhase) world.getEnvironmentAttributes().getAttributeValue(EnvironmentAttributes.MOON_PHASE_VISUAL);
+
+            if (moonPhase.getIndex() == 4) {
                 Random random = world.random;
                 this.cooldown--;
                 if (this.cooldown <= 0) {
@@ -52,6 +56,8 @@ public class PhantomSpawnerMixin {
                                                         phantomEntity.refreshPositionAndAngles(blockPos2, 0.0F, 0.0F);
                                                         entityData = phantomEntity.initialize(world, localDifficulty, SpawnReason.NATURAL, entityData);
                                                         world.spawnEntityAndPassengers(phantomEntity);
+                                                        System.out.println("spawn phantom");
+
                                                     }
                                                 }
                                             }
